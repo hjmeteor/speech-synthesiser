@@ -4,7 +4,7 @@ import argparse
 from nltk.corpus import cmudict
 import re
 # what I import
-import wave
+from SimpleAudio import wave
 import numpy as np
 import datetime
 
@@ -491,7 +491,8 @@ if __name__ == "__main__":
             load_audio(out, path=S.phones[token])
 
     #Allow the user to set the volume argument (--volume, -v) to a value between 0.0 and 1.0.
-    out.rescale(args.volume)
+    if args.volume:
+        out.rescale(args.volume)
 
     #Play the result
     out.play()
